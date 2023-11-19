@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Page Title</title>
+    <!-- Add your CSS links and other head elements here -->
+    <!-- Example: <link rel="stylesheet" href="styles.css"> -->
+</head>
+<body style="background-color: rgb(230, 227, 227);">
+
+<div class="container mt-4">
+    <div class="row">
+        <!-- Information Card -->
+        <div class="col-md-4 mt-4">
+            <div class="card bg-dark text-white">
+                <div class="card-header bg-info text-white">
+                    Information
+                </div>
+                <div class="card-body">
+                    <marquee behavior="" direction="">
+                        <h3 class="my-5 text-sm">New Information</h3>
+                    </marquee>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Statistics Card -->
+        <div class="col-md-8 mt-4">
+            <div class="card bg-dark text-white">
+                <div class="card-header bg-info text-white">
+                    Dashboard Statistics
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <!-- Staff Card -->
+                        <div class="col-md-4 mb-3">
+                            <a class="text-decoration-none text-white" href="{% url 'dashboard-staff' %}">
+                                <div class="card my-card shadow">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-dark">Staff <i class="fas fa-users"></i></h4>
+                                        <h3 class="text-dark">9</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Products Card -->
+                        <div class="col-md-4 mb-3">
+                            <a class="text-decoration-none text-white" href="{% url 'dashboard-product' %}">
+                                <div class="card my-card shadow">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-dark">Products <i class="fas fa-box"></i></h4>
+                                        <h3 class="text-dark">9</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+
+                        <!-- Orders Card -->
+                        <div class="col-md-4 mb-3">
+                            <a class="text-decoration-none text-white" href="{% url 'dashboard-order' %}">
+                                <div class="card my-card shadow">
+                                    <div class="card-body text-center">
+                                        <h4 class="text-dark">Orders <i class="fas fa-shipping-fast"></i></h4>
+                                        <h3 class="text-dark">9</h3>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

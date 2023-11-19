@@ -1,0 +1,36 @@
+<!-- notifications.html -->
+{% extends 'partials/base.html' %}
+{% block title %}Notification Page {% endblock %}
+
+{% block content %}
+<!--Card-->
+<div class="container">
+    <div class="row my-4">
+        <div class="col-md-4"></div>
+        <div class="col-md-8">
+            {% if expiring_items %}
+                {% for item in expiring_items %}
+                    <div class="card text-white bg-dark mb-3">
+                        <div class="card-header">Expiry Item</div>
+                        <div class="card-body">
+                            <h5 class="card-title">{{ item.product_name }}</h5>
+                            <p class="card-text">
+                                Product ID: {{ item.product_id }}<br>
+                                Category: {{ item.category }}<br>
+                                Quantity: {{ item.quantity }}<br>
+                                Current Quantity: {{ item.current_quantity }}<br>
+                                Expiry Time: {{ item.expiry_time|time:"H:i" }}<br>
+                                Time Remaining: {{ item.time_remaining|time:"H:i" }}<br>
+                            </p>
+                            <a href="#" class="btn btn-info btn-sm">View</a>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>No items with expiry dates found.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+<!--End Card-->
+{% endblock %}
