@@ -1,72 +1,25 @@
 from django.contrib import admin
-from .models import Product,Order,Staff
-from django.contrib.auth.models import Group
-# Register your models here.
+from .models import Product, Order, Staff
 
+admin.site.site_header = "Perishable Inventory"
 
-
-
-admin.site.site_header = "Perishabe_Inventory"
 class ProductAdmin(admin.ModelAdmin):
-    list_display=(
-        'product_id',
-        'product_name',
-        'category',
-        'quantity',
-    )
-    search_fields=[
-        'product_id',
-        'product_name',
-        'category',
-        'quantity',
-
-    ]
-    
-    list_filter=[
-        'category',
-        'quantity',
-        
-    ]
+    list_display = ('product_id', 'product_name', 'category', 'quantity', 'price', 'expiry_time')
+    search_fields = ['product_id', 'product_name', 'category', 'quantity', 'price', 'expiry_time']
+    list_filter = ['category', 'quantity', 'expiry_time']
 
 class OrderAdmin(admin.ModelAdmin):
-    list_display=(
-        'product',
-        'product_category',
-        'sold_quantity',
-        'price',
-        'sales',
-        'date'
-    )
-
-    search_fields=[
-        'product',
-        'product__category',
-        'sold_quantity',
-        'price',
-        'sales',
-        'date'
-
-    ]
-    
-    list_filter=[
-        'product',
-        'product__category',
-        'sold_quantity',
-        'price',
-        'sales',
-        'date'
-        
-    ]   
+    list_display = ('product', 'product_category', 'sold_quantity', 'price', 'sales', 'date')
+    search_fields = ['product__product_name', 'product__category', 'sold_quantity', 'price', 'sales', 'date']
+    list_filter = ['product__category', 'sold_quantity', 'price', 'sales', 'date']
 
     def product_category(self, obj):
-        return obj.product.category 
-    
+        return obj.product.category
+
 class StaffAdmin(admin.ModelAdmin):
     list_display = ('name', 'employee_id', 'designation')
     search_fields = ['name', 'employee_id', 'designation']
 
-
-admin.site.register(Product,ProductAdmin)
-admin.site.register(Order,OrderAdmin)
+admin.site.register(Product, ProductAdmin)
+admin.site.register(Order, OrderAdmin)
 admin.site.register(Staff, StaffAdmin)
-
